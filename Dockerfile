@@ -7,4 +7,4 @@ ENV HOST=0.0.0.0
 ENV PORT=8000
 
 EXPOSE 8000
-CMD ["python3", "app.py"]
+CMD ["python", "app.py"]

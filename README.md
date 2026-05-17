@@ -44,7 +44,7 @@ Buy/sell: BUY
 ## Run
 
 ```bash
-python3 app.py
+python app.py
 ```
 
 Then open:
@@ -59,7 +59,7 @@ http://127.0.0.1:8000
 2. Run the app on the Mac:
 
 ```bash
-python3 app.py
+python app.py
 ```
 
 3. Open the iPhone URL printed in the terminal, for example:
@@ -89,7 +89,7 @@ This project is ready for deployment with:
 
 ```text
 Build Command: empty
-Start Command: python3 app.py
+Start Command: python app.py
 Health Check Path: /health
 ```
 

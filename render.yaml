@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: ""
-    startCommand: "python3 app.py"
+    startCommand: "python app.py"
     healthCheckPath: /health
     envVars:
       - key: TWILIO_ACCOUNT_SID
