@@ -1,6 +1,6 @@
 # USDT Market Scanner Bot Demo
 
-Python demo application for scanning USDT trading pairs.
+Demo BOT AI Trading. Python demo application for scanning USDT trading pairs with WhatsApp alerts.
 
 ## What it does
 
