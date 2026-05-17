@@ -223,15 +223,17 @@ def build_alert_message(
     trade_action: str,
 ) -> str:
     action = trade_action.upper()
-    if action not in {"BUY", "SELL"}:
-        action = "BUY" if signal["change_percent"] >= 0 else "SELL"
+    if action not in {"BUY NOW", "SELL NOW"}:
+        action = "BUY NOW" if signal["change_percent"] >= 0 else "SELL NOW"
 
     profit = amount * (percent / 100)
     total = amount + profit
+    symbol = str(signal["symbol"])
+    base_symbol = symbol[:-4] if symbol.endswith("USDT") else symbol
 
     return "\n".join(
         [
-            f"USDT token: {signal['symbol']}",
+            f"USDT {base_symbol} USDT",
             "",
             f"Amount: {format_usd(amount)}",
             f"Winst: {format_usd(profit)}",
@@ -681,8 +683,8 @@ def render_html() -> bytes:
         </label>
         <label>Buy/sell
           <select id="tradeAction">
-            <option value="BUY">BUY</option>
-            <option value="SELL">SELL</option>
+            <option value="BUY NOW">BUY NOW</option>
+            <option value="SELL NOW">SELL NOW</option>
           </select>
         </label>
         <button id="sendAlertButton">Send WhatsApp alert</button>
@@ -918,7 +920,7 @@ class ScannerHandler(BaseHTTPRequestHandler):
                 threshold = safe_int(body.get("threshold"), 55)
                 amount = safe_float(body.get("amount"), 100)
                 percent = safe_float(body.get("percent"), 20)
-                trade_action = str(body.get("trade_action", "BUY"))
+                trade_action = str(body.get("trade_action", "BUY NOW"))
                 payload = create_alert(
                     min_volume=min_volume,
                     threshold=threshold,

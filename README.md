@@ -30,7 +30,7 @@ export ALERT_WHATSAPP_TO="whatsapp:+12345678900"
 Example WhatsApp alert:
 
 ```text
-USDT token: BTCUSDT
+USDT BTC USDT
 
 Amount: 100.00$
 Winst: 20.00$
@@ -38,7 +38,7 @@ Procent: 20%
 
 Totaal: 120.00$
 
-Buy/sell: BUY
+Buy/sell: BUY NOW
 ```
 
 ## Run
