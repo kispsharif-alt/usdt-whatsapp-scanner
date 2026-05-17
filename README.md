@@ -109,3 +109,15 @@ https://usdt-whatsapp-scanner.onrender.com
 ```
 
 That is the link you can send to other people.
+
+Current public demo URL:
+
+```text
+https://app-scanner.onrender.com
+```
+
+WhatsApp share URL:
+
+```text
+https://wa.me/?text=USDT%20WhatsApp%20Scanner%20Bot%20Demo%3A%20https%3A%2F%2Fapp-scanner.onrender.com
+```

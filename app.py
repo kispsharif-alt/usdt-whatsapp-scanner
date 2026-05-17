@@ -457,6 +457,20 @@ def render_html() -> bytes:
       font-weight: 700;
       align-self: end;
     }
+    .link-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      border-radius: 6px;
+      border: 1px solid var(--blue);
+      background: var(--blue);
+      color: #06111f;
+      padding: 0 12px;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+    }
     .alert-panel {
       display: grid;
       gap: 14px;
@@ -490,6 +504,12 @@ def render_html() -> bytes:
     .alert-actions {
       display: grid;
       grid-template-columns: repeat(4, minmax(130px, 1fr)) minmax(180px, 240px);
+      gap: 10px;
+      align-items: end;
+    }
+    .share-actions {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) minmax(170px, 210px);
       gap: 10px;
       align-items: end;
     }
@@ -596,6 +616,7 @@ def render_html() -> bytes:
       .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .alert-header { display: grid; }
       .alert-actions { grid-template-columns: 1fr; }
+      .share-actions { grid-template-columns: 1fr; }
       .alert-mode { white-space: normal; }
       .table-wrap { overflow-x: auto; }
     }
@@ -669,6 +690,22 @@ def render_html() -> bytes:
       <pre class="alert-output" id="alertOutput">Waiting for scanner signal...</pre>
     </section>
 
+    <section class="alert-panel">
+      <div class="alert-header">
+        <div>
+          <h2>Share Demo Link</h2>
+          <p>Send this public demo link through WhatsApp so clients can open the bot from any phone.</p>
+        </div>
+        <span class="alert-mode">Public Render URL</span>
+      </div>
+      <div class="share-actions">
+        <label>Demo link
+          <input id="demoLink" type="text" readonly value="">
+        </label>
+        <a class="link-button" id="whatsappShareLink" target="_blank" rel="noopener">Share on WhatsApp</a>
+      </div>
+    </section>
+
     <section class="table-wrap">
       <table>
         <thead>
@@ -695,6 +732,10 @@ def render_html() -> bytes:
     const statusEl = document.querySelector("#status");
     const alertOutput = document.querySelector("#alertOutput");
     const fields = ["minVolume", "minScore", "limit", "sortBy"];
+    const demoUrl = window.location.origin;
+    const shareText = encodeURIComponent(`USDT WhatsApp Scanner Bot Demo: ${demoUrl}`);
+    document.querySelector("#demoLink").value = demoUrl;
+    document.querySelector("#whatsappShareLink").href = `https://wa.me/?text=${shareText}`;
 
     const money = (value) => {
       if (value >= 1_000_000_000) return `$${(value / 1_000_000_000).toFixed(2)}B`;
